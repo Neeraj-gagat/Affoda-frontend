@@ -27,7 +27,7 @@ export const AppBar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-18 uppercase text-[14px]">
             <Link href="/" className="text-gray-700 hover:text-affoda-blue font-medium">Hotels</Link>
             <Link href="/about" className="text-gray-700 hover:text-affoda-blue font-medium">About</Link>
             <Link href="/contact" className="text-gray-700 hover:text-affoda-blue font-medium">Contact</Link>

@@ -1,5 +1,103 @@
 @import "tailwindcss";
 
+@theme {
+  /* Font family */
+  /* --font-sans: "Poppins", sans-serif; */
+  /* --font-family: "Poppins", sans-serif; */
+
+  /* Border radius */
+  --radius-lg: 0.5rem;
+  --radius-md: 0.375rem;
+  --radius-sm: 0.25rem;
+
+  /* Easing (optional) */
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Base colors */
+  --color-border: hsl(240 5% 90%);
+  --color-input: hsl(240 6% 95%);
+  --color-ring: hsl(240 4% 80%);
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(240 10% 10%);
+
+  /* Brand colors */
+  --color-primary: hsl(220 90% 56%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(270 40% 50%);
+  --color-secondary-foreground: hsl(0 0% 100%);
+  --color-destructive: hsl(0 80% 60%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  --color-muted: hsl(210 15% 95%);
+  --color-muted-foreground: hsl(210 5% 40%);
+  --color-accent: hsl(160 80% 70%);
+  --color-accent-foreground: hsl(160 100% 10%);
+  --color-popover: hsl(0 0% 98%);
+  --color-popover-foreground: hsl(240 10% 10%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(240 10% 10%);
+
+  /* Sidebar colors */
+  --color-sidebar-background: hsl(240 5% 98%);
+  --color-sidebar-foreground: hsl(240 10% 20%);
+  --color-sidebar-primary: hsl(240 100% 60%);
+  --color-sidebar-primary-foreground: hsl(0 0% 100%);
+  --color-sidebar-accent: hsl(280 100% 70%);
+  --color-sidebar-accent-foreground: hsl(0 0% 100%);
+  --color-sidebar-border: hsl(240 5% 90%);
+  --color-sidebar-ring: hsl(240 4% 80%);
+
+  /* Affoda brand (static colors) */
+  --color-affoda-blue: #004e71;
+  --color-affoda-yellow: #f9e12a;
+  --color-affoda-light-blue: #7ededf;
+}
+
+/* 🌙 Dark mode overrides */
+.dark {
+  --color-background: hsl(240 10% 10%);
+  --color-foreground: hsl(0 0% 100%);
+
+  --color-border: hsl(240 5% 30%);
+  --color-input: hsl(240 6% 25%);
+  --color-ring: hsl(240 4% 40%);
+
+  --color-primary: hsl(220 100% 70%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(270 40% 70%);
+  --color-secondary-foreground: hsl(0 0% 100%);
+  --color-destructive: hsl(0 80% 50%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  --color-muted: hsl(210 15% 20%);
+  --color-muted-foreground: hsl(210 10% 70%);
+  --color-accent: hsl(160 80% 40%);
+  --color-accent-foreground: hsl(160 100% 95%);
+  --color-popover: hsl(240 10% 15%);
+  --color-popover-foreground: hsl(0 0% 100%);
+  --color-card: hsl(240 10% 15%);
+  --color-card-foreground: hsl(0 0% 100%);
+
+  --color-sidebar-background: hsl(240 10% 12%);
+  --color-sidebar-foreground: hsl(0 0% 100%);
+  --color-sidebar-primary: hsl(240 100% 70%);
+  --color-sidebar-primary-foreground: hsl(0 0% 100%);
+  --color-sidebar-accent: hsl(280 100% 60%);
+  --color-sidebar-accent-foreground: hsl(0 0% 100%);
+  --color-sidebar-border: hsl(240 5% 30%);
+  --color-sidebar-ring: hsl(240 4% 50%);
+}
+
+
+
+/* @theme {
+
+  --color-affoda-blue: #004e71;
+  --color-affoda-yellow: #f9e12a;
+  --color-affoda-light-blue: #7ededf;
+  --color-affoda-accent: #7ededf;
+
+} */
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
