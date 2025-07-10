@@ -10,7 +10,7 @@ const geistSans = Geist({
 const poppins = Poppins({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: "600"
+  weight: "300"
 });
 
 const geistMono = Geist_Mono({

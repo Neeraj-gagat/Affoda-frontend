@@ -1,15 +1,21 @@
 "use client"
-
+import { Poppins } from 'next/font/google';
 import React from 'react';
 import Link  from 'next/link';
 import { Menu, X, Globe, User, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "600"
+});
+
+
 export const AppBar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <header className="bg-white shadow-sm fixed w-full top-0 z-50">
+    <header className={`${poppins.className} bg-white shadow-sm fixed w-full top-0 z-50`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
