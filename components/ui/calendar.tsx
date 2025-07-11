@@ -54,7 +54,7 @@ const Calendar = ({
         range_middle:
           'aria-selected:bg-accent  aria-selected:text-accent-foreground',
         caption_label:"uppercase",
-        range_start:"rounded-sm ",
+        range_start:"rounded-sm bg-black",
         range_end: 'rounded-sm',
         day_hidden: 'invisible',
         ...classNames,

@@ -1,10 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Font family */
-  /* --font-sans: "Poppins", sans-serif; */
-  /* --font-family: "Poppins", sans-serif; */
-
   /* Border radius */
   --radius-lg: 0.5rem;
   --radius-md: 0.375rem;
@@ -22,7 +19,7 @@
   --color-foreground: hsl(240 10% 10%);
 
   /* Brand colors */
-  --color-primary: hsl(220 90% 56%);
+  --color-primary: hsl(193, 100%, 19%);
   --color-primary-foreground: hsl(100 0% 100%);
   --color-secondary: hsl(270 40% 50%);
   --color-secondary-foreground: hsl(0 0% 100%);
@@ -30,7 +27,7 @@
   --color-destructive-foreground: hsl(0 0% 100%);
   --color-muted: hsl(210 15% 95%);
   --color-muted-foreground: hsl(210 5% 40%);
-  --color-accent: hsl(160 80% 70%);
+  --color-accent: hsl(177 72% 72%);
   --color-accent-foreground: hsl(160 100% 10%);
   --color-popover: hsl(0 0% 98%);
   --color-popover-foreground: hsl(240 10% 10%);

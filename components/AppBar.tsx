@@ -1,28 +1,23 @@
 "use client"
-import { Poppins } from 'next/font/google';
+// import { Poppins } from 'next/font/google';
 import React from 'react';
 import Link  from 'next/link';
 import { Menu, X, Globe, User, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: "600"
-});
 
 
 export const AppBar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <header className={`${poppins.className} bg-white shadow-sm fixed w-full top-0 z-50`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className={`bg-white shadow-sm fixed w-screen top-0 z-50`}>
+      <div className="container mx-auto px-5 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div className="relative">
               <span className="text-3xl font-bold text-affoda-blue">affoda</span>
-              <div className="absolute -top-4 -right-8 w-8 h-8">
+              <div className="absolute -top-3 -right-8 w-8 h-8">
                 <div className="absolute inset-0 transform animate-float">
                   <div className="w-5 h-5 bg-affoda-yellow transform rotate-45" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div>
                 </div>
