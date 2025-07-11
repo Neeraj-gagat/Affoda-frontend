@@ -109,9 +109,10 @@ const BookingForm = ({ className }: BookingFormProps) => {
                     selected={dateRange}
                     onSelect={setDateRange}
                     numberOfMonths={2}
+                    pagedNavigation
                     disabled={(date) => date < new Date()}
-                    initialFocus
-                    className={cn("p-3 pointer-events-auto")}
+                    autoFocus
+                    className={cn("p-3 pointer-events-auto font-medium")}
                   />
                 </PopoverContent>
               </Popover>

@@ -23,7 +23,7 @@
 
   /* Brand colors */
   --color-primary: hsl(220 90% 56%);
-  --color-primary-foreground: hsl(0 0% 100%);
+  --color-primary-foreground: hsl(100 0% 100%);
   --color-secondary: hsl(270 40% 50%);
   --color-secondary-foreground: hsl(0 0% 100%);
   --color-destructive: hsl(0 80% 60%);

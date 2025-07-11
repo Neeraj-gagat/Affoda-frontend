@@ -18,38 +18,40 @@ const Calendar = ({
 }: CalendarProps) => {
   return (
     <DayPicker
+      navLayout='around'
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       classNames={{
+        weekdays:'flex justify-between mx-3',
         months: 'flex flex-col sm:flex-row sm:space-x-4 sm:space-y-0 space-y-4',
-        month: 'w-full',
-        caption: 'flex justify-between items-center px-2',
+        month: 'space-y-0',
+        caption: 'flex justify-between items-center px-2]',
         caption_label: 'text-base font-semibold',
         nav: 'flex items-center space-x-1',
         nav_button: cn(
           buttonVariants({ variant: 'outline' }),
           'h-8 w-8 bg-transparent p-0 opacity-50 hover:opacity-100'
         ),
-        nav_button_previous: '',
-        nav_button_next: '',
+        nav_button_previous: 'absolute left-1',
+        nav_button_next: 'absolute right-1',
         table: 'w-full border-collapse',
-        head_row: '',
-        head_cell: 'text-sm text-gray-500 font-medium text-center',
-        row: '',
+        head_row: 'flex',
+        head_cell: 'text-muted-foreground text-green-700 rounded-md w-9 font-normal text-[0.8rem]',
+        row: 'flex w-full mt-2',
         cell: 'text-center p-1',
         day: cn(
           buttonVariants({ variant: 'ghost' }),
-          'w-9 h-9 p-0 text-sm font-normal aria-selected:opacity-100'
+          'w-9 h-9 p-0 text-sm font-medium aria-selected:opacity-100'
         ),
         day_selected:
           'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
-        day_today: 'bg-accent text-accent-foreground',
-        day_outside:
+        today: 'bg-accent text-accent-foreground',
+        outside:
           'text-muted-foreground opacity-50 aria-selected:bg-accent/50',
         day_disabled: 'text-muted-foreground opacity-50',
         day_range_middle:
           'aria-selected:bg-accent aria-selected:text-accent-foreground',
-        day_range_end: 'rounded-r-md',
+        day_range_end: 'rounded-sm',
         day_hidden: 'invisible',
         ...classNames,
       }}
