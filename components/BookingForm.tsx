@@ -112,7 +112,7 @@ const BookingForm = ({ className }: BookingFormProps) => {
                     pagedNavigation
                     disabled={(date) => date < new Date()}
                     autoFocus
-                    className={cn("p-3 pointer-events-auto font-medium")}
+                    className={cn("p-3")}
                   />
                 </PopoverContent>
               </Popover>

@@ -22,36 +22,40 @@ const Calendar = ({
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       classNames={{
-        weekdays:'flex justify-between mx-3',
+        // #7fe7c2
+        // day_button:"text-[14px]",
+        weekdays:'flex justify-between mx-3 text-[15px]',
         months: 'flex flex-col sm:flex-row sm:space-x-4 sm:space-y-0 space-y-4',
-        month: 'space-y-0',
-        caption: 'flex justify-between items-center px-2]',
-        caption_label: 'text-base font-semibold',
+        month: 'space-y-2 md:space-y-4',
+        caption: 'flex justify-between items-center px-2',
+        month_caption: 'text-[14px] font-[500] items-center flex justify-center',
         nav: 'flex items-center space-x-1',
         nav_button: cn(
           buttonVariants({ variant: 'outline' }),
-          'h-8 w-8 bg-transparent p-0 opacity-50 hover:opacity-100'
+          'h-8 w-8 bg-transparent text-green-900 p-0 opacity-50 hover:opacity-100'
         ),
-        nav_button_previous: 'absolute left-1',
-        nav_button_next: 'absolute right-1',
+        button_previous: 'absolute left-2 top-3 bg-gray-200 rounded-md hover:bg-accent transition duration-200',
+        button_next: 'absolute right-2 top-3 bg-gray-200 rounded-md hover:bg-accent transition duration-200',
         table: 'w-full border-collapse',
         head_row: 'flex',
-        head_cell: 'text-muted-foreground text-green-700 rounded-md w-9 font-normal text-[0.8rem]',
+        head_cell: 'text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]',
         row: 'flex w-full mt-2',
         cell: 'text-center p-1',
         day: cn(
           buttonVariants({ variant: 'ghost' }),
-          'w-9 h-9 p-0 text-sm font-medium aria-selected:opacity-100'
+          'w-9 h-9 p-0 text-[14px] font-[400] aria-selected:opacity-100'
         ),
-        day_selected:
+        selected:
           'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground',
         today: 'bg-accent text-accent-foreground',
         outside:
           'text-muted-foreground opacity-50 aria-selected:bg-accent/50',
-        day_disabled: 'text-muted-foreground opacity-50',
-        day_range_middle:
-          'aria-selected:bg-accent aria-selected:text-accent-foreground',
-        day_range_end: 'rounded-sm',
+        disabled: 'text-muted-foreground opacity-50',
+        range_middle:
+          'aria-selected:bg-accent  aria-selected:text-accent-foreground',
+        caption_label:"uppercase",
+        range_start:"rounded-sm ",
+        range_end: 'rounded-sm',
         day_hidden: 'invisible',
         ...classNames,
       }}

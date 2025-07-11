@@ -87,6 +87,35 @@
   --color-sidebar-ring: hsl(240 4% 50%);
 }
 
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+.date-range-picker .react-datepicker {
+  @apply bg-white shadow-lg rounded-lg border border-gray-200;
+}
+
+.date-range-picker .react-datepicker__month-container {
+  @apply p-2;
+}
+
+.date-range-picker .react-datepicker__day--in-range {
+  @apply bg-accent/50;
+}
+
+.date-range-picker .react-datepicker__day--in-selecting-range {
+  @apply bg-accent/30;
+}
+
+.date-range-picker .react-datepicker__day--selected {
+  @apply bg-primary text-white rounded-full;
+}
 
 
 /* @theme {
