@@ -5,9 +5,9 @@ import {
     // ParkingCircle, 
     // Utensils,
     // ChevronRight,
-    Bed
+    // Bed
   } from 'lucide-react';
-import BookingForm from './BookingForm';
+import BookingTabs from './BookingTabs';
 
 export const Hero  = () => {
     return <div>
@@ -23,13 +23,13 @@ export const Hero  = () => {
 
              {/* Hotel Booking Form */}
              <div className="max-w-5xl mx-auto">
-              <div className="bg-white/20 backdrop-blur-sm p-1 mb-6 inline-flex rounded-lg">
+              {/* <div className="bg-white/20 backdrop-blur-sm p-1 mb-6 inline-flex rounded-lg">
                 <div className="bg-white text-affoda-blue px-4 py-2 rounded-md flex items-center font-medium">
                   <Bed className="h-4 w-4 mr-2" />
                   Hotels
                 </div>
-              </div>
-              <BookingForm />
+              </div> */}
+              <BookingTabs />
             </div>
           </div>
             </section>
