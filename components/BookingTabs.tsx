@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Badge } from '@/components/ui/badge';
+// import { Badge } from '@/components/ui/badge';
 import { 
   Building, 
   Plane, 
@@ -22,22 +22,22 @@ const BookingTabs = () => {
   return (
     <div className="bg-transparent rounded-lg shadow-xl overflow-hidden">
       {/* Tab Navigation */}
-      <div className='flex justify-center bg-transparent'>
-      <div className="flex border-b w-[550px] mx-auto bg-white rounded-sm">
+      <div className='flex justify-center bg-transparent -translate-y-2 md:translate-y-4 pt-2.5  md:pt-0'>
+      <div className="flex md:border-b w-[550px] mx-auto bg-transparent md:bg-white rounded-lg z-50">
         {tabs.map((tab) => {
           const IconComponent = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center space-x-2 py-2 px-6 relative rounded-sm ${
+              className={`flex-1 border-b flex flex-col md:flex-row items-center justify-center py-2 md:py-3.5 px-3 md:px-4 relative rounded-sm ${
                 activeTab === tab.id
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
               }`}
             >
               <IconComponent className="h-5 w-5" />
-              <span className="font-[400] text-[13px] items-center">{tab.label}</span>
+              <span className="font-[400] text-[10px] md:text-[13px] items-center">{tab.label}</span>
             </button>
           );
         })}
@@ -48,7 +48,7 @@ const BookingTabs = () => {
       <div className="p-6">
         {activeTab === 'hotels' && (
           <div>
-            <p className='text-black'>Destination</p>
+            <p className='text-gray-700 text-[13px] md:text-[14px] font-[500] pb-1 md:pb-2'>Destination</p>
             {/* <div className="flex space-x-2 mb-6">
               <button className="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
                 Overnight Stays

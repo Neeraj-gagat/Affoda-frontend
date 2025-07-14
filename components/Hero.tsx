@@ -14,12 +14,12 @@ export const Hero  = () => {
         <div className="flex flex-col min-h-screen">
             <section className="pt-20 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-affoda-blue to-affoda-blue/80 text-white relative overflow-hidden" style={{backgroundImage: "url(bg-affoda-fp.jpg)", backgroundSize: "cover", backgroundPosition: "center",backgroundBlendMode: "overlay"}} >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-8 md:mb-10">
+            {/* <div className="text-center mb-8 md:mb-10">
               <h1 className="text-3xl md:text-5xl font-bold mb-4">Find Your Perfect Hotel</h1>
               <p className="text-lg md:text-xl max-w-2xl mx-auto">
                 Search deals on hotels and accommodations worldwide...
               </p>
-            </div>
+            </div> */}
 
              {/* Hotel Booking Form */}
              <div className="max-w-5xl mx-auto">

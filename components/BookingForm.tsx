@@ -37,7 +37,7 @@ const BookingForm = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="space-y-6">
+    <form onSubmit={handleSearch} className="space-y-2 md:space-y-4">
       {/* Destination */}
       <div className="relative">
         <div className="relative">
@@ -47,32 +47,33 @@ const BookingForm = () => {
             placeholder="Enter a destination or property"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 text-base text-gray-900 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white shadow-sm"
+            className="w-full pl-12 pr-4 py-2 md:py-4 text-[12px] md:text-[15px] text-gray-900 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white shadow-sm"
           />
         </div>
       </div>
 
       {/* Date Range and Guests Container */}
       <div className="bg-gray-50 p-4 rounded-lg border-2 border-gray-200">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {/* Check-in Date */}
+          <div className='grid md:flex grid-cols-2 md:flex-row gap-3 '>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Check-in</label>
+            <label className="block text-[12px] md:text-[15px] font-medium text-gray-700 mb-2">Check-in</label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-blue-500",
+                    "w-30 md:w-[225px] justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-blue-500",
                     !dateRange?.from && "text-gray-400"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon className="mr-0 md:mr-2 h-4 w-4" />
                   <div className="flex flex-col items-start">
-                    <span className="text-sm font-medium">
+                    <span className="text-[12px] md:text-[14px] font-medium">
                       {dateRange?.from ? format(dateRange.from, "dd MMM yyyy") : "Select date"}
                     </span>
-                    <span className="text-xs text-gray-400">
+                    <span className="text-[10px] md:text-[12px] text-gray-400">
                       {dateRange?.from ? format(dateRange.from, "EEEE") : "Day"}
                     </span>
                   </div>
@@ -93,22 +94,22 @@ const BookingForm = () => {
 
           {/* Check-out Date */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Check-out</label>
+            <label className="block text-[12px] md:text-[15px] font-medium text-gray-700 mb-2">Check-out</label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-blue-500",
+                    "w-30 md:w-[225px] justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-blue-500",
                     !dateRange?.to && "text-gray-400"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon className="mr-0 md:mr-2 h-4 w-4" />
                   <div className="flex flex-col items-start">
-                    <span className="text-sm font-medium">
+                    <span className="text-[12px] md:text-[14px] font-medium">
                       {dateRange?.to ? format(dateRange.to, "dd MMM yyyy") : "Select date"}
                     </span>
-                    <span className="text-xs text-gray-400">
+                    <span className="text-[10px] md:text-[12px] text-gray-400">
                       {dateRange?.to ? format(dateRange.to, "EEEE") : "Day"}
                     </span>
                   </div>
@@ -126,22 +127,24 @@ const BookingForm = () => {
               </PopoverContent>
             </Popover>
           </div>
+          </div>
+          
 
           {/* Guests */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Guests & rooms</label>
+            <label className="block text-[12px] md:text-[15px] font-medium text-gray-700 mb-2">Guests & rooms</label>
             <Popover open={isGuestPopoverOpen} onOpenChange={setIsGuestPopoverOpen}>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
-                  className="w-full justify-start text-left text-gray-900 h-12 font-normal bg-white border-gray-300 hover:border-blue-500"
+                  className="w-full justify-start text-left text-gray-900 h-10 md:h-12 font-normal bg-white border-gray-300 hover:border-blue-500"
                 >
                   <Users className="mr-2 h-4 w-4" />
                   <div className="flex flex-col items-start">
-                    <span className="text-sm font-medium">
+                    <span className="text-[12px] md:text-[14px] font-medium">
                       {adults + children} guests
                     </span>
-                    <span className="text-xs text-gray-400">
+                    <span className="text-[10px] md:text-[12px] text-gray-400">
                       {rooms} room{rooms > 1 ? 's' : ''}
                     </span>
                   </div>
