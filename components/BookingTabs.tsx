@@ -23,21 +23,21 @@ const BookingTabs = () => {
     <div className="bg-transparent rounded-lg shadow-xl overflow-hidden">
       {/* Tab Navigation */}
       <div className='flex justify-center bg-transparent -translate-y-2 md:translate-y-4 pt-2.5  md:pt-0'>
-      <div className="flex md:border-b w-[550px] mx-auto bg-transparent md:bg-white rounded-lg z-50">
+      <div className="flex md:border-b w-[550px] mx-auto bg-transparent md:bg-white rounded-lg z-50 gap-2 md:gap-0">
         {tabs.map((tab) => {
           const IconComponent = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 border-b flex flex-col md:flex-row items-center justify-center py-2 md:py-3.5 px-3 md:px-4 relative rounded-sm ${
+              className={`flex-1 shadow-3xl flex flex-col gap-2 md:flex-row items-center justify-center py-2 md:py-3.5 px-2 md:px-4 relative rounded-md ${
                 activeTab === tab.id
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                  ? 'md:bg-blue-600 text-blue-600 bg-white md:text-white'
+                  : 'bg-black/20 md:bg-gray-50 text-gray-100 md:text-gray-700 hover:bg-gray-100'
               }`}
             >
               <IconComponent className="h-5 w-5" />
-              <span className="font-[400] text-[10px] md:text-[13px] items-center">{tab.label}</span>
+              <span className="font-[600] md:font-[600] text-[11px] md:text-[13px] items-center">{tab.label}</span>
             </button>
           );
         })}
