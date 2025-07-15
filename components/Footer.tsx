@@ -10,14 +10,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="relative mb-4">
-              <span className="text-3xl font-bold text-white">affoda</span>
-              <div className="absolute -top-4 -right-8 w-8 h-8">
+            <div className="relative mb-4 flex">
+              <span className="relative text-3xl font-[400] text-white z-20">affoda</span>
+              <div className="absolute -top-3 -right-8 w-8 h-8">
                 <div className="absolute inset-0 transform animate-float">
-                  <div className="w-5 h-5 bg-affoda-yellow transform rotate-45" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div>
+                  <div className="w-5 h-5 bg-affoda-yellow transform -rotate-120 -translate-x-[262px] md:-translate-x-[180px]" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div>
                 </div>
               </div>
-              <div className="absolute top-2 right-4 w-4 h-4 bg-affoda-light-blue rounded-full"></div>
+              <div className="-translate-x-[262px] md:-translate-x-[180px] absolute top-[17px] right-[26px] w-2.5 h-2.5 bg-affoda-light-blue rounded-full z-0"></div>
             </div>
             <p className="text-gray-300 mb-4">
               Book accommodations around the world at affordable prices. 
@@ -60,8 +60,8 @@ const Footer = () => {
               <li><Link href="#" className="text-gray-300 hover:text-white">Booking Conditions</Link></li>
               <li><Link href="#" className="text-gray-300 hover:text-white">Cancellation Policy</Link></li>
               <li><Link href="#" className="text-gray-300 hover:text-white">About Us</Link></li>
-              <li><Link href="#" className="text-gray-300 hover:text-white">Privacy Policy</Link></li>
-              <li><Link href="#" className="text-gray-300 hover:text-white">Terms of Service</Link></li>
+              {/* <li><Link href="#" className="text-gray-300 hover:text-white">Privacy Policy</Link></li> */}
+              {/* <li><Link href="#" className="text-gray-300 hover:text-white">Terms of Service</Link></li> */}
             </ul>
           </div>
 
@@ -82,14 +82,14 @@ const Footer = () => {
                 <span className="text-gray-300">Download our mobile app</span>
               </li>
             </ul>
-            <div className="mt-4 flex space-x-2">
+            {/* <div className="mt-4 flex space-x-2">
               <div className="bg-white p-1 rounded-md">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" className="h-8" />
               </div>
               <div className="bg-white p-1 rounded-md">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1280px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" className="h-8" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

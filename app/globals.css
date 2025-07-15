@@ -114,6 +114,29 @@
   @apply bg-primary text-white rounded-full;
 }
 
+@theme{
+
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+    /* 100% {
+      transform: translateY(0);
+    } */
+  }
+
+}
+
+
+
+@animation float {
+  animation: float 3s ease-in-out infinite;
+}
 
 /* @theme {
 

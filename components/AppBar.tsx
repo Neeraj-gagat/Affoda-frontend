@@ -16,15 +16,15 @@ export const AppBar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div className="relative">
-              <span className="text-3xl font-bold text-affoda-blue">affoda</span>
+              <span className="relative text-3xl font-[400] text-affoda-blue z-20">affoda</span>
               <div className="absolute -top-3 -right-8 w-8 h-8">
                 <div className="absolute inset-0 transform animate-float">
-                  <div className="w-5 h-5 bg-affoda-yellow transform rotate-45" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div>
+                  <div className="w-5 h-5 bg-affoda-yellow transform -rotate-120" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div>
                 </div>
               </div>
-              <div className="absolute top-2 right-4 w-4 h-4 bg-affoda-light-blue rounded-full"></div>
+              <div className="absolute top-[17px] right-[26px] w-2.5 h-2.5 bg-affoda-light-blue rounded-full z-0"></div>
             </div>
-            <span className="ml-2 text-affoda-yellow text-sm hidden sm:block font-medium">stay affordable</span>
+            <span className="ml-2 text-affoda-blue text-sm hidden sm:block font-[400] translate-y-5 -translate-x-28">stay affordable</span>
           </Link>
 
           {/* Desktop Navigation */}

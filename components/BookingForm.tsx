@@ -47,7 +47,7 @@ const BookingForm = () => {
             placeholder="Enter a destination or property"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-            className="w-full pl-12 pr-4 py-2 md:py-4 text-[12px] md:text-[15px] text-gray-900 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white shadow-sm"
+            className="w-full pl-12 pr-4 py-2 md:py-4 text-[12px] md:text-[15px] text-gray-900 border-1 border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 bg-white shadow-sm"
           />
         </div>
       </div>
@@ -64,7 +64,7 @@ const BookingForm = () => {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-34 md:w-[225px] justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-blue-500",
+                    "w-34 md:w-[225px] justify-start transform duration-300 hover:bg-gray-100 text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
                     !dateRange?.from && "text-gray-400"
                   )}
                 >
@@ -100,7 +100,7 @@ const BookingForm = () => {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-34 md:w-[225px] justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-blue-500",
+                    "w-34 md:w-[225px] hover:bg-gray-100 transform duration-300 justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
                     !dateRange?.to && "text-gray-400"
                   )}
                 >
@@ -137,7 +137,7 @@ const BookingForm = () => {
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
-                  className="w-full justify-start text-left text-gray-900 h-10 md:h-12 font-normal bg-white border-gray-300 hover:border-blue-500"
+                  className="w-full justify-start text-left transform duration-300 hover:bg-gray-100 text-gray-900 h-10 md:h-12 font-normal bg-white border-gray-300 hover:border-gray-400"
                 >
                   <Users className="mr-2 h-4 w-4" />
                   <div className="flex flex-col items-start">

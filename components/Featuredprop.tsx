@@ -68,7 +68,7 @@ export const FeraturedProp = () => {
                 <section className="py-10 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Featured Properties</h2>
+              <h2 className="text-2xl md:text-3xl font-[500] text-gray-900">Featured Properties</h2>
               <Button variant="ghost" className="text-affoda-blue font-medium">
                 View all <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
@@ -87,7 +87,7 @@ export const FeraturedProp = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <Badge className="mb-2 bg-affoda-yellow/20 text-affoda-blue hover:bg-affoda-yellow/20">Explore The World</Badge>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Popular Destinations</h2>
+              <h2 className="text-3xl font-[500] text-gray-900 mb-4">Popular Destinations</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Discover our most visited places with top-rated properties
               </p>

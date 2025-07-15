@@ -22,15 +22,15 @@ const BookingTabs = () => {
   return (
     <div className="bg-transparent rounded-lg shadow-xl overflow-hidden">
       {/* Tab Navigation */}
-      <div className='flex justify-center bg-transparent -translate-y-2 md:translate-y-4 pt-2.5  md:pt-0'>
-      <div className="flex md:border-b w-[550px] mx-auto bg-transparent md:bg-white rounded-lg z-50 gap-2 md:gap-0">
+      <div className='flex justify-center bg-transparent -translate-y-2 md:translate-y-4 pt-2.5  md:pt-0 '>
+      <div className="flex md:border-b w-[550px] md:shadow-xl mx-auto bg-transparent md:bg-white rounded-lg z-50 gap-2 md:gap-0">
         {tabs.map((tab) => {
           const IconComponent = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 shadow-3xl flex flex-col gap-2 md:flex-row items-center justify-center py-2 md:py-3.5 px-2 md:px-4 relative rounded-md ${
+              className={`flex-1  flex flex-col gap-2 md:flex-row items-center justify-center py-2 md:py-3.5 px-2 md:px-4 relative rounded-md ${
                 activeTab === tab.id
                   ? 'md:bg-blue-600 text-blue-600 bg-white md:text-white'
                   : 'bg-black/20 md:bg-gray-50 text-gray-100 md:text-gray-700 hover:bg-gray-100'
