@@ -12,7 +12,7 @@ import BookingTabs from './BookingTabs';
 export const Hero  = () => {
     return <div>
         <div className="flex flex-col md:min-h-screen">
-            <section className="pb-16 pt-32 md:pb-24 bg-gradient-to-b from-affoda-blue to-affoda-blue/80 text-white relative overflow-hidden" style={{backgroundImage: "url(https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)", backgroundSize: "cover", backgroundPosition: "center",backgroundBlendMode: "overlay"}} >
+            <section className="pb-16 pt-32 md:pb-24 bg-gradient-to-b from-affoda-blue to-affoda-blue/80 text-white relative overflow-hidden" style={{backgroundImage: "url(https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)", backgroundSize: "cover", backgroundPosition: "center",backgroundBlendMode: "overlay"}} >
             {/* Alternative Maldives background options (uncomment to use):
                 
                 Beautiful overwater bungalows:
