@@ -12,7 +12,7 @@ import BookingTabs from './BookingTabs';
 export const Hero  = () => {
     return <div>
         <div className="flex flex-col md:min-h-screen">
-            <section className="pb-16 pt-32 md:pb-24 bg-gradient-to-b from-affoda-blue to-affoda-blue/80 text-white relative overflow-hidden" style={{backgroundImage: "url(bg-hero.jpeg)", backgroundSize: "cover", backgroundPosition: "center",backgroundBlendMode: "overlay"}} >
+            <section className="pb-16 pt-32 md:pb-24 bg-gradient-to-b from-affoda-blue to-affoda-blue/80 text-white relative overflow-hidden" style={{backgroundImage: "url(https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)", backgroundSize: "cover", backgroundPosition: "center",backgroundBlendMode: "overlay"}} >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* <div className="text-center mb-8 md:mb-10">
               <h1 className="text-3xl md:text-5xl font-bold mb-4">Find Your Perfect Hotel</h1>

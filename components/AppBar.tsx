@@ -4,6 +4,7 @@ import React from 'react';
 import Link  from 'next/link';
 import { Menu, X, Globe, User, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { IoIosPaperPlane } from "react-icons/io";
 
 
 export const AppBar = () => {
@@ -19,12 +20,15 @@ export const AppBar = () => {
               <span className="relative text-3xl font-[400] text-affoda-blue z-20">affoda</span>
               <div className="absolute -top-3 -right-8 w-8 h-8">
                 <div className="absolute inset-0 transform animate-float">
-                  <div className="w-5 h-5 bg-affoda-yellow transform -rotate-120" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div>
+                  {/* <div className="w-5 h-5 bg-affoda-yellow transform -rotate-120 -translate-x-12" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div> */}
+                  <div className="w-5 h-5 transform rotate-12 -translate-x-5">
+                  <IoIosPaperPlane size={20} color='#f9e12a' />
+                  </div>
                 </div>
               </div>
               <div className="absolute top-[17px] right-[26px] w-2.5 h-2.5 bg-affoda-light-blue rounded-full z-0"></div>
             </div>
-            <span className="ml-2 text-affoda-blue text-sm hidden sm:block font-[400] translate-y-5 -translate-x-28">stay affordable</span>
+            <span className=" text-affoda-blue text-sm hidden sm:block font-[400] translate-y-5 -translate-x-24">travel for less</span>
           </Link>
 
           {/* Desktop Navigation */}
