@@ -12,7 +12,7 @@ export const AppBar = () => {
 
   return (
     <header className={`bg-white shadow-sm fixed w-screen top-0 z-50`}>
-      <div className="container mx-auto px-5 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-5 sm:px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -52,6 +52,9 @@ export const AppBar = () => {
             <Button variant="outline" className="flex items-center border-affoda-blue text-affoda-blue hover:bg-affoda-blue/5">
               <User className="h-4 w-4 mr-2" />
               <span>Sign in</span>
+            </Button>
+            <Button variant="outline" className="bg-affoda-blue border-affoda-blue hover:bg-affoda-blue/90 text-white hover:text-white">
+              Create account
             </Button>
           </div>
 
