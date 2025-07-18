@@ -5,9 +5,13 @@ import Link  from 'next/link';
 import { Menu, X, Globe, User, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { IoIosPaperPlane } from "react-icons/io";
+import { usePathname, useRouter } from 'next/navigation';
 
 
 export const AppBar = () => {
+  const pathname = usePathname() 
+
+  const router  = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
@@ -32,11 +36,11 @@ export const AppBar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-18 uppercase text-[14px]">
+          {/* <nav className="hidden md:flex items-center space-x-18 uppercase text-[14px]">
             <Link href="/" className="text-gray-700 hover:text-affoda-blue font-medium">Hotels</Link>
             <Link href="/about" className="text-gray-700 hover:text-affoda-blue font-medium">About</Link>
             <Link href="/contact" className="text-gray-700 hover:text-affoda-blue font-medium">Contact</Link>
-          </nav>
+          </nav> */}
 
           {/* User Navigation */}
           <div className="hidden md:flex items-center space-x-4">
@@ -49,13 +53,23 @@ export const AppBar = () => {
               <span>USD</span>
               <ChevronDown className="h-4 w-4 ml-1" />
             </Button>
-            <Button variant="outline" className="flex items-center border-affoda-blue text-affoda-blue hover:bg-affoda-blue/5">
+            { pathname !== "/signin" && (
+              <Button onClick={() => (
+                  router.push("/signin")
+                )
+              } variant="outline" className="flex items-center border-affoda-blue text-affoda-blue hover:bg-affoda-blue/5">
               <User className="h-4 w-4 mr-2" />
-              <span>Sign in</span>
+              <span >Sign in</span>
             </Button>
-            <Button variant="outline" className="bg-affoda-blue border-affoda-blue hover:bg-affoda-blue/90 text-white hover:text-white">
+            )}
+            {pathname !== "/signup" && (
+              <Button onClick={() => (
+                  router.push("signup")
+              )} variant="outline" className="bg-affoda-blue border-affoda-blue hover:bg-affoda-blue/90 text-white hover:text-white">
               Create account
             </Button>
+            )}
+            
           </div>
 
           {/* Mobile Menu Button */}
