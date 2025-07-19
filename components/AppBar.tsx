@@ -99,7 +99,9 @@ export const AppBar = () => {
             <Link href="/about" className="block py-2 text-gray-700 hover:text-affoda-blue">About</Link>
             <Link href="/contact" className="block py-2 text-gray-700 hover:text-affoda-blue">Contact</Link>
             <hr className="my-2" />
-            <Button variant="outline" className="w-full justify-center border-affoda-blue text-affoda-blue hover:bg-affoda-blue/5">
+            <Button onClick={() => (
+              router.push("/signin")
+            )} variant="outline" className="w-full justify-center border-affoda-blue text-affoda-blue hover:bg-affoda-blue/5">
               <User className="h-4 w-4 mr-2" />
               <span>Sign in</span>
             </Button>
