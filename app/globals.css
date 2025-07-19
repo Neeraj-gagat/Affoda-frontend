@@ -45,7 +45,8 @@
   --color-sidebar-ring: hsl(240 4% 80%);
 
   /* Affoda brand (static colors) */
-  --color-affoda-blue: #004e71;
+  /* --color-affoda-blue: #004e71; */
+  --color-affoda-blue: #01314B;
   --color-affoda-yellow: #f9e12a;
   --color-affoda-light-blue: #7ededf;
 }

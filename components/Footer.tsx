@@ -1,7 +1,8 @@
 
 import React from 'react';
 import Link  from 'next/link';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, Smartphone, CreditCard, Shield } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, CreditCard, Shield } from 'lucide-react';
+import { IoIosPaperPlane } from "react-icons/io";
 
 const Footer = () => {
   return (
@@ -14,10 +15,19 @@ const Footer = () => {
               <span className="relative text-3xl font-[400] text-white z-20">affoda</span>
               <div className="absolute -top-3 -right-8 w-8 h-8">
                 <div className="absolute inset-0 transform animate-float">
-                  <div className="w-5 h-5 bg-affoda-yellow transform -rotate-120 -translate-x-[262px] md:-translate-x-[180px]" style={{ clipPath: 'polygon(0 0, 100% 0, 50% 100%)' }}></div>
+                  <div className="w-5 h-5  transform rotate-12 -translate-x-[275px] md:-translate-x-[195px]" >
+                    <IoIosPaperPlane size={20} color='#08B5F3' className='' />
+                  </div>
                 </div>
               </div>
-              <div className="-translate-x-[262px] md:-translate-x-[180px] absolute top-[17px] right-[26px] w-2.5 h-2.5 bg-affoda-light-blue rounded-full z-0"></div>
+              <div className='-translate-x-[1px]'>
+              <div className="absolute top-[33px] right-[5px] w-2.5 h-2.5 bg-[#FD79BC] rounded-full z-0"></div>
+              <div className="absolute top-[33px] right-[26px] w-2.5 h-2.5 bg-[#FEA952] rounded-full z-0"></div>
+              <div className="absolute top-[33px] right-[46px] w-2.5 h-2.5 bg-[#42E442] rounded-full z-0"></div>
+              <div className="absolute top-[33px] right-[66px] w-2.5 h-2.5 bg-[#38D1F0] rounded-full z-0"></div>
+              <div className="absolute top-[33px] right-[86px] w-2.5 h-2.5 bg-[#FFFF51] rounded-full z-0"></div>
+              </div>
+              {/* <div className="-translate-x-[262px] md:-translate-x-[180px] absolute top-[17px] right-[26px] w-2.5 h-2.5 bg-affoda-light-blue rounded-full z-0"></div> */}
             </div>
             <p className="text-gray-300 mb-4">
               Book accommodations around the world at affordable prices. 
@@ -77,10 +87,10 @@ const Footer = () => {
                 <Phone className="h-5 w-5 mr-2 mt-0.5 text-affoda-yellow" />
                 <span className="text-gray-300">+1 (555) 123-4567</span>
               </li>
-              <li className="flex items-start">
+              {/* <li className="flex items-start">
                 <Smartphone className="h-5 w-5 mr-2 mt-0.5 text-affoda-yellow" />
                 <span className="text-gray-300">Download our mobile app</span>
-              </li>
+              </li> */}
             </ul>
             {/* <div className="mt-4 flex space-x-2">
               <div className="bg-white p-1 rounded-md">
@@ -105,9 +115,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CreditCard className="h-5 w-5 text-gray-300" />
-                <img src="https://cdn.worldvectorlogo.com/logos/visa-10.svg" alt="Visa" className="h-6" />
-                <img src="https://cdn.worldvectorlogo.com/logos/mastercard-2.svg" alt="MasterCard" className="h-6" />
-                <img src="https://cdn.worldvectorlogo.com/logos/paypal-4.svg" alt="PayPal" className="h-6" />
+                <img src="https://cdn.worldvectorlogo.com/logos/visa-10.svg" alt="Visa" className="h-3 md:h-6" />
+                <img src="mscard.svg" alt="MasterCard" className="h-3 md:h-6" />
+                <img src="https://cdn.worldvectorlogo.com/logos/paypal-4.svg" alt="PayPal" className="h-6 md:h-6" />
               </div>
             </div>
           </div>
