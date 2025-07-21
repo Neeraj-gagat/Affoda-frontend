@@ -37,7 +37,7 @@ const EmailVerification = () => {
     try {
       // Here you would call your backend API to verify the email
       // const response = await fetch('http://localhost:3001/api/v1/user/verify-email', {
-      const response = await fetch(`http://localhost:3001/api/v1/user/verify-email?token=${verificationToken}`, {
+      const response = await fetch(`http://backend.affoda.com/api/v1/user/verify-email?token=${verificationToken}`, {
         method: 'GET',
         // headers: { 'Content-Type': 'application/json' },
         // body: JSON.stringify({ token: verificationToken })
