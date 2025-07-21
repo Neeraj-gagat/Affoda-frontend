@@ -19,7 +19,6 @@ const EmailVerification = () => {
   
   const token = searchParams.get('token');
   
-
   useEffect(() => {
     const storedemail = localStorage.getItem("verifyEmail");
     setEmail(storedemail);
