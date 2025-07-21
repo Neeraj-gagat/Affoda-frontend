@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import { useState, useEffect } from "react";
+import { Suspense } from 'react';
 import  Link from "next/link";
 import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, XCircle, Loader2, Mail } from "lucide-react";
 
 const EmailVerification = () => {
+
   const searchParams = useSearchParams();
   const [email, setEmail] = useState<string | null>(null);
   const [verificationStatus, setVerificationStatus] = useState<'loading' | 'success' | 'error' | 'expired'>('loading');
@@ -169,6 +171,7 @@ const EmailVerification = () => {
   };
 
   return (
+    <Suspense fallback={<div className="text-center">Loading...</div>}>
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-50 p-4">
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -190,6 +193,7 @@ const EmailVerification = () => {
         </CardContent>
       </Card>
     </div>
+    </Suspense>
   );
 };
 
