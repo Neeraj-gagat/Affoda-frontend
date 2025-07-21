@@ -1,21 +1,26 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client"
 import { useState, useEffect } from "react";
 import  Link from "next/link";
-import { useRouter } from "next/router";
+import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, XCircle, Loader2, Mail } from "lucide-react";
 
 const EmailVerification = () => {
-  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [email, setEmail] = useState<string | null>(null);
   const [verificationStatus, setVerificationStatus] = useState<'loading' | 'success' | 'error' | 'expired'>('loading');
   const [isResending, setIsResending] = useState(false);
   const { toast } = useToast();
   
-  const token = router.query.token;
-  const email = localStorage.getItem("verifyEmail");
+  const token = searchParams.get('token');
+  
 
   useEffect(() => {
+    const storedemail = localStorage.getItem("verifyEmail");
+    setEmail(storedemail);
     if (token) {
       if (typeof token === 'string') {
         verifyEmail(token);
@@ -30,26 +35,26 @@ const EmailVerification = () => {
   const verifyEmail = async (verificationToken: string) => {
     try {
       // Here you would call your backend API to verify the email
-      // const response = await fetch('/api/verify-email', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ token: verificationToken })
-      // });
-
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // const response = await fetch('http://localhost:3001/api/v1/user/verify-email', {
+      const response = await fetch(`http://localhost:3001/api/v1/user/verify-email?token=${verificationToken}`, {
+        method: 'GET',
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify({ token: verificationToken })
+      });
       
       // Simulate different responses based on token
-      if (verificationToken === 'expired') {
-        setVerificationStatus('expired');
-      } else if (verificationToken === 'invalid') {
-        setVerificationStatus('error');
-      } else {
-        setVerificationStatus('success');
-      }
-    } catch (error) {
+      const data = await response.json();
+
+    if (response.ok) {
+      setVerificationStatus('success');
+    } else if (data.message === 'Invalid or expired token.') {
+      setVerificationStatus('expired');
+    } else {
       setVerificationStatus('error');
     }
+  } catch (error) {
+    setVerificationStatus('error');
+  }
   };
 
   const resendVerificationEmail = async () => {
@@ -65,7 +70,7 @@ const EmailVerification = () => {
       // });
 
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    //   await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
         title: "Verification email sent!",

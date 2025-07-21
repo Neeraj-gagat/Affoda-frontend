@@ -32,20 +32,18 @@ const Signup = () => {
 
     try {
       // Here you would integrate with your backend API
-      const response = await fetch('/api/signup', {
+      const response = await fetch('http://localhost:3001/api/v1/user/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      const data = await response.json(); // 👈 parse response body
+      const data = await response.json();
       if (response.ok) {
-        localStorage.setItem("verifyEmail", formData.email); // 👈 you already have the email in formData
+        localStorage.setItem("verifyEmail", formData.email); 
         // Optionally redirect or show success
       } else {
         console.error("Signup failed:", data.message);
       }
-      // // Simulate API call
-      // await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
         title: "Account created successfully!",

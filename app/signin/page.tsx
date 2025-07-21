@@ -7,8 +7,11 @@ import { Label } from "@/components/ui/lable";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
 
 const Login = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,14 +34,14 @@ const Login = () => {
 
     try {
       // Here you would integrate with your backend API
-      // const response = await fetch('/api/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
+      const response = await fetch('http://localhost:3001/api/v1/user/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
         title: "Welcome back!",
@@ -46,6 +49,7 @@ const Login = () => {
       });
       
       // Redirect to dashboard or home page
+      router.push("/")
     } catch (error) {
         console.log(error)
       toast({
