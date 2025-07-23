@@ -33,7 +33,7 @@ const EmailVerificationContent = () => {
 
   const verifyEmail = async (verificationToken: string) => {
     try {
-      const response = await fetch(`http://backend.affoda.com/api/v1/user/verify-email?token=${verificationToken}`, {
+      const response = await fetch(`https://backend.affoda.com/api/v1/user/verify-email?token=${verificationToken}`, {
         method: 'GET',
       });
       

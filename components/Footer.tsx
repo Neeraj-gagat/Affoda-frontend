@@ -10,15 +10,16 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div>
-            <div className="relative mb-4 flex">
-              <span className="relative text-3xl font-[400] text-white z-20">affoda</span>
-              <div className="absolute -top-3 -right-8 w-8 h-8">
-                <div className="absolute inset-0 transform animate-float">
-                  <div className="w-5 h-5  transform rotate-12 -translate-x-[275px] md:-translate-x-[195px]" >
+          <div className='-mt-4'>
+          <div className="-mb-1.5 transform animate-float">
+                  <div className="w-5 h-5  transform rotate-12 translate-x-[86px]" >
                     <IoIosPaperPlane size={20} color='#08B5F3' className='' />
                   </div>
                 </div>
+            <div className="relative mb-4 flex">
+              <span className="relative text-3xl font-[400] text-white z-20">affoda</span>
+              <div className="absolute -top-3 -right-8 w-8 h-8">
+                
               </div>
               <div className='-translate-x-[1px]'>
               <div className="absolute top-[33px] right-[5px] w-2.5 h-2.5 bg-[#FD79BC] rounded-full z-0"></div>

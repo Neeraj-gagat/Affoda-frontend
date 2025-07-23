@@ -35,7 +35,7 @@ const Login = () => {
 
     try {
       // Here you would integrate with your backend API
-      const response = await fetch('http://backend.affoda.com/api/v1/user/signin', {
+      const response = await fetch('https://backend.affoda.com/api/v1/user/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
