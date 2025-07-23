@@ -1,4 +1,5 @@
 
+import { Poiret_One } from 'next/font/google';
 import { 
     // Globe, 
     // Wifi, 
@@ -8,6 +9,11 @@ import {
     // Bed
   } from 'lucide-react';
 import BookingTabs from './BookingTabs';
+
+const poiretone = Poiret_One({
+  subsets:['latin'],
+  weight:["400"],
+})
 
 export const Hero  = () => {
     return <div>
@@ -39,10 +45,10 @@ export const Hero  = () => {
                 Maldives beach swing:
                 src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
             */}
-            <div className="mx-auto px-4 -mt-10 md:-mt-6">
-            <div className="text-center mb-3  text-white">
+            <div className="mx-auto px-4 -mt-10 md:-mt-9">
+            <div className="text-center mb-3 md:mb-1  text-white">
               {/* <h1 className="text-3xl md:text-5xl font-bold mb-4">Find Your Perfect Hotel</h1> */}
-              <p className="text-[28px] md:text-[45px] font-[400] mx-auto ">
+              <p className={`${poiretone.className} text-[39px] md:text-[55px] font-[400] mx-auto`}>
                 Stay for less
               </p>
             </div>
