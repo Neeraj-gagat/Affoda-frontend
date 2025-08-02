@@ -170,14 +170,34 @@ export default function hotelsPage() {
     </div>
 }
 
+const ratting = (reviewScore:number):string => {
+    if (reviewScore >= 9) {
+        return `${reviewScore}  Excellent`;
+      } else if (reviewScore >= 7) {
+        return `${reviewScore}  Good`;
+      } else if (reviewScore >= 5) {
+        return `${reviewScore}  Average`;
+      } else {
+        return `${reviewScore}  Bad`;
+      }
+}
+
 const Result = ({results}:hotelsdataprops) => {
  return <div className="pt-20 ">
         <div className="py-5 md:py-10 flex flex-col items-center justify-center gap-4">
             {results.map((hotel: Hotel) => (
-                <div key={hotel.hotelId} className="bg-white border flex flex-row rounded-lg overflow-hidden">
-                    <img src={hotel.imageURL} alt="image" width={300} height={300} className="" />
-                    <div className="flex flex-col p-3 w-[360px] text-start">
-                        <h1 className="text-[19px] font-[700] text-slate-800">{hotel.hotelName}</h1>
+                <div key={hotel.hotelId} className="bg-white border border-black/20 flex flex-row rounded-lg overflow-hidden">
+                    <img src={hotel.imageURL} alt="image" className="w-[270px] h-[215px]" />
+                    <div className="flex flex-col p-3 w-[340px] text-start">
+                        <h1 className="text-[19px] font-[600] text-slate-800">{hotel.hotelName}</h1>
+                        <div>
+                            <p className="text-[15px]">This hotel includes </p>
+                            
+                        </div>
+                    </div>
+                    <div className="border-l border-black/20 w-[200px] flex flex-col items-end p-2">
+                    <span className="text-[15px] text-blue-500 font-[600]">{ratting(hotel.reviewScore)}</span>
+                    <span className="text-[14px] font-[500] text-black/60 flex"><p className=" text-[13px] font-[500]">{hotel.reviewCount} reviews</p> </span> 
                     </div>
                 </div>
             ))}
