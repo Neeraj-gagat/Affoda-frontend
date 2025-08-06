@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon, Search, MapPin, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,8 +13,16 @@ import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import type { DateRange } from 'react-day-picker';
 
+interface City {
+  cityId: string;
+  cityName: string;
+}
+
 const BookingForm = () => {
   const [destination, setDestination] = useState('');
+  const [cities, setCities] = useState<City[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [filteredCities, setFilteredCities] = useState<City[]>([]);
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: undefined,
     to: undefined,
@@ -23,6 +31,33 @@ const BookingForm = () => {
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [isGuestPopoverOpen, setIsGuestPopoverOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/cities.json")
+      .then((res) => res.json())
+      .then((data) => setCities(data));
+  }, []);
+
+  useEffect(() => {
+    if (destination.length > 1) {
+      const filtered = cities
+        .filter((city) =>
+          city.cityName.toLowerCase().includes(destination.toLowerCase())
+        )
+        .slice(0, 10); // limit suggestions to top 10
+      setFilteredCities(filtered);
+      setShowSuggestions(true);
+    } else {
+      setFilteredCities([]);
+      setShowSuggestions(false);
+    }
+  }, [destination, cities]);
+
+  const handleSelect = (city: City) => {
+    setDestination(city.cityName);
+    setShowSuggestions(false);
+    // you can also store city.cityId if needed for API calls
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,6 +84,20 @@ const BookingForm = () => {
             onChange={(e) => setDestination(e.target.value)}
             className="w-full pl-12 pr-4 py-2 md:py-4 text-[12px] md:text-[15px] text-gray-900 border-1 border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 bg-white shadow-sm"
           />
+          {/* Suggestions Dropdown */}
+      {showSuggestions && filteredCities.length > 0 && (
+        <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg">
+          {filteredCities.map((city) => (
+            <li
+              key={city.cityId}
+              onClick={() => handleSelect(city)}
+              className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-[12px] md:text-[14px] text-black border-b border-gray-300"
+            >
+              {city.cityName}
+            </li>
+          ))}
+        </ul>
+      )}
         </div>
       </div>
 
