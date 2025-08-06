@@ -8,6 +8,7 @@ import {
   MapPin
 } from 'lucide-react';
 import BookingForm from './BookingForm';
+import AgodaWidget from './AgodaWidget';
 
 const BookingTabs = () => {
   const [activeTab, setActiveTab] = useState('hotels');
@@ -59,6 +60,7 @@ const BookingTabs = () => {
             </div> */}
             
             <BookingForm />
+            {/* <AgodaWidget/> */}
           </div>
         )}
         

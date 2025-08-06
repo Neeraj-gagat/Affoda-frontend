@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
+// import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* <head> */}
+{/* <div id="adgshp903464889"></div> */}
+{/* <Script
+  src="//cdn0.agoda.net/images/sherpa/js/sherpa_init1_08.min.js"
+  strategy="afterInteractive"
+/>
+<Script id="sherpa-init" strategy="afterInteractive">
+  {`
+    var stg = new Object(); 
+    stg.crt="6584199009026";
+    stg.version="1.04"; 
+    stg.id=stg.name="adgshp903464889"; 
+    stg.width="320px"; 
+    stg.height="420px";
+    stg.ReferenceKey="jsYUAjeW9I3vwQygvv/KyA=="; 
+    stg.Layout="SquareCalendar"; 
+    stg.Language="en-us";
+    stg.Cid="1945178"; 
+    stg.DestinationName="";
+    stg.OverideConf=false; 
+    new AgdSherpa(stg).initialize();
+  `}
+</Script>
+
+      </head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
       >

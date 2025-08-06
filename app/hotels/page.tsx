@@ -252,9 +252,9 @@ const Result = ({results}:hotelsdataprops) => {
                     <div className="relative border-l border-black/20 w-[200px] flex flex-col items-end p-2">
                     <span className="text-[15px] text-blue-500 font-[600]">{ratting(hotel.reviewScore)}</span>
                     <span className="text-[14px] font-[500] text-black/60 flex"><p className=" text-[13px] font-[500]">{hotel.reviewCount} reviews</p> </span> 
-                    <div className="absolute flex flex-col items-center justify-center gap-2 bottom-5 align-text-bottom">
+                    <div className="absolute flex flex-col justify-items-end bottom-5 align-text-bottom">
                         <span className="text-[10px]">Per night before taxes and fees</span>
-                        <div className="flex flex-row justify-end-safe gap-2 ">
+                        <div className="flex flex-row justify-end-safe gap-2 items-center">
                         <span className="text-[24px] text-black/50">Rs.</span>
                         <span className="text-[22px] pt-1 text-red-500 font-[600]">{getCleanPrice(hotel.dailyRate)}</span>
                         </div>
