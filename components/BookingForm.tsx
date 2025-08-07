@@ -12,6 +12,7 @@ import {
 import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import type { DateRange } from 'react-day-picker';
+import { useRouter } from 'next/navigation';
 
 interface City {
   cityId: string;
@@ -19,6 +20,7 @@ interface City {
 }
 
 const BookingForm = () => {
+  const router = useRouter();
   const [destination, setDestination] = useState('');
   const [cities, setCities] = useState<City[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -69,6 +71,7 @@ const BookingForm = () => {
       adults,
       children
     });
+    router.push(`/hotels?city=${destination}&checkIn=${dateRange?.from}&checkOut=${dateRange?.to}&rooms=${rooms}&adults=${adults}&children=${children}`);
   };
 
   return (
@@ -292,7 +295,7 @@ const BookingForm = () => {
       </div>
 
       {/* Search Button */}
-      <Button 
+      <Button
         type="submit" 
         className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-4 text-lg h-auto rounded-lg shadow-lg"
       >
