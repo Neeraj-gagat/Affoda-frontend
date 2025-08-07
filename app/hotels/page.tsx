@@ -2,7 +2,6 @@
 import { AppBar } from "@/components/AppBar";
 import Footer from "@/components/Footer";
 import { useSearchParams } from "next/navigation";
-// import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 interface hotelsdataprops {
@@ -37,14 +36,18 @@ const checkOut = searchParams.get("checkOut");
 const rooms = searchParams.get("rooms");
 const adults = searchParams.get("adults");
 const children = searchParams.get("children");
+const language = searchParams.get("language");
+const currency = searchParams.get("currency");
+const maxresults = searchParams.get("maxresults");
+const sortby = searchParams.get("sortby");
 
     useEffect(() => {
         if (!searchParams) return;
     
-        if (city && checkIn && checkOut && rooms && adults && children) {
-          fetchHotels(city as string, checkIn as string, checkOut as string, parseInt(rooms as string), parseInt(adults as string), parseInt(children as string));
+        if (city && checkIn && checkOut && rooms && adults && children && language && maxresults) {
+          fetchHotels(city as string, checkIn as string, checkOut as string, parseInt(rooms as string), parseInt(adults as string), parseInt(children as string), language as string, currency as string, parseInt(maxresults as string), sortby as string );
         }
-      }, [city, checkIn, checkOut, rooms, adults, children]);
+      }, [city, checkIn, checkOut, rooms, adults, children, language, currency, maxresults, sortby]);
 
 
       const fetchHotels = async (
@@ -53,18 +56,59 @@ const children = searchParams.get("children");
         checkOut: string,
         rooms: number,
         adults: number,
-        children: number
+        children: number,
+        language: string,
+        currency: string,
+        maxresults: number,
+        sortby: string
       ) => {
         try {
-          const res = await fetch(
-            `http://localhost:3001/hotel-result?city=${city}&checkIn=${checkIn}&checkOut=${checkOut}&rooms=${rooms}&adults=${adults}&children=${children}`, {method: "POST"}
-          );
+          const res = await fetch("http://localhost:3001/api/v1/search/hotel-result", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              checkInDate: checkIn,
+              checkOutDate: checkOut,
+              cityId: Number(city),
+              additional: {
+                currency,
+                language,
+                maxResult: maxresults,
+                sortBy: sortby,
+                discountOnly: false,
+                minimumStarRating: 0,
+                minimumReviewScore: 0,
+                dailyRate: {
+                  minimum: 1,
+                  maximum: 10000,
+                },
+                occupancy: {
+                  numberOfAdult: adults,
+                  numberOfChildren: children,
+                },
+              },
+            }),
+          });
+      
           const result = await res.json();
-          setData(result.hotels); // assumes { hotels: [...] }
+      
+          if (!result || !result.results) {
+            console.warn("Empty or invalid response from server:", result);
+            setData([]);
+          } else {
+            setData(result.results); // assuming result.results is the hotel list
+          }
         } catch (err) {
           console.error("Error fetching hotels:", err);
         }
       };
+      
+
+      if (!data || !Array.isArray(data)) {
+        return <div>No results found</div>
+      }
 
     return <div>
         <AppBar/>
@@ -103,7 +147,7 @@ const ratting = (reviewScore:number):string => {
 const Result = ({results}:hotelsdataprops) => {
  return <div className="pt-20 ">
         <div className="py-5 md:py-10 flex flex-col items-center justify-center gap-4">
-            {results.map((hotel: Hotel) => (
+            {results?.map((hotel: Hotel) => (
                 <div key={hotel.hotelId} className="bg-white border border-black/20 flex flex-row rounded-lg overflow-hidden hover:bg-[#E5EFFF] hover:shadow-xl transition-all duration-300 cursor-pointer">
                     <img src={hotel.imageURL} alt="image" className="w-[270px] h-[215px]" />
                     <div className="flex flex-col p-3 w-[340px] text-start">
