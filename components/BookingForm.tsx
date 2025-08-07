@@ -86,12 +86,12 @@ const BookingForm = () => {
           />
           {/* Suggestions Dropdown */}
       {showSuggestions && filteredCities.length > 0 && (
-        <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg">
+        <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-md my-1 max-h-67 md:max-h-55 overflow-y-auto shadow-lg px-4 md:px-8">
           {filteredCities.map((city) => (
             <li
               key={city.cityId}
               onClick={() => handleSelect(city)}
-              className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-[12px] md:text-[14px] text-black border-b border-gray-300"
+              className="px-4 py-2 md:py-4 cursor-pointer hover:bg-gray-100 text-[12px] md:text-[14px] text-black border-b border-gray-200"
             >
               {city.cityName}
             </li>

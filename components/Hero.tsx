@@ -49,7 +49,7 @@ export const Hero  = () => {
             <div className="text-center mb-3 md:mb-1  text-white">
               {/* <h1 className="text-3xl md:text-5xl font-bold mb-4">Find Your Perfect Hotel</h1> */}
               <p className={`${poiretone.className} text-[39px] md:text-[55px] font-[400] mx-auto`}>
-                Stay for less
+                Stay Affordable
               </p>
             </div>
 
