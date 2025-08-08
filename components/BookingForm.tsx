@@ -54,7 +54,15 @@ const BookingForm = () => {
       setFilteredCities([]);
       setShowSuggestions(false);
     }
-  }, [destination, cities]);
+  }, [destination, cities]);  
+
+  const formatAPIDate = (date?: Date) => {
+    if (!date) return "";
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
 
   const handleSelect = (city: City) => {
     setDestination(city.cityName);
@@ -73,7 +81,7 @@ const BookingForm = () => {
       adults,
       children
     });
-    router.push(`/hotels?city=${city}&checkIn=${dateRange?.from}&checkOut=${dateRange?.to}&rooms=${rooms}&adults=${adults}&children=${children}&language=${"en-us"}&currency=${"INR"}&maxresults=${10}&sortby=${"PriceAsc"}`);
+    router.push(`/hotels?city=${city}&checkIn=${formatAPIDate(dateRange?.from)}&checkOut=${formatAPIDate(dateRange?.to)}&rooms=${rooms}&adults=${adults}&children=${children}&language=${"en-us"}&currency=${"INR"}&maxresults=${10}&sortby=${"PriceAsc"}`);
   };
 
   return (

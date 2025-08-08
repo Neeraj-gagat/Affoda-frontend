@@ -45,8 +45,11 @@ const sortby = searchParams.get("sortby");
         if (!searchParams) return;
     
         if (city && checkIn && checkOut && rooms && adults && children && language && maxresults) {
+          console.log("before fetching hotels")
           fetchHotels(city as string, checkIn as string, checkOut as string, parseInt(rooms as string), parseInt(adults as string), parseInt(children as string), language as string, currency as string, parseInt(maxresults as string), sortby as string );
+          console.log("after fetching hotels")
         }
+        console.log("here i am"+city, checkIn, checkOut, rooms, adults, children, language, currency, maxresults, sortby);
       }, [city, checkIn, checkOut, rooms, adults, children, language, currency, maxresults, sortby]);
 
 
@@ -78,12 +81,12 @@ const sortby = searchParams.get("sortby");
                 maxResult: maxresults,
                 sortBy: sortby,
                 discountOnly: false,
-                minimumStarRating: 0,
-                minimumReviewScore: 0,
-                dailyRate: {
-                  minimum: 1,
-                  maximum: 10000,
-                },
+                // minimumStarRating: 0,
+                // minimumReviewScore: 0,
+                // dailyRate: {
+                //   minimum: 1,
+                //   maximum: 10000,
+                // },
                 occupancy: {
                   numberOfAdult: adults,
                   numberOfChildren: children,
