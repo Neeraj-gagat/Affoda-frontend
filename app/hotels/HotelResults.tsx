@@ -116,7 +116,7 @@ const sortby = searchParams.get("sortby");
         return <div>No results found</div>
       }
 
-    return <div className="">
+    return <div className="overflow-x-hidden">
         <AppBar/>
         <Result results={data} loading={loading}/>
         <Footer/>
@@ -126,7 +126,7 @@ const sortby = searchParams.get("sortby");
 function getStars(rating: number): string {
     // return '★'.repeat(rating) + '☆'.repeat(5 - rating);
     if (rating === 0) {
-        return ""
+        return "☆☆☆☆☆"
     }else {
         return '★'.repeat(rating) + '☆'.repeat(5 - rating);
     }
@@ -151,28 +151,43 @@ const ratting = (reviewScore:number):string => {
 }
 
 const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
- return <div className="pt-20 ">
-        <div className="py-5 md:py-10 flex flex-col items-center justify-center gap-4">
+ return <div className="pt-20">
+        <div className="py-5 md:py-10 flex flex-col items-center justify-center gap-1.5 md:gap-4">
             {loading
             ? Array.from({length:5}).map((_, index) => (
               <HotelCardSkeleton key={index} />
             ))
             :results?.map((hotel: Hotel) => (
                 <div key={hotel.hotelId} className="bg-white border border-black/20 flex flex-row rounded-lg overflow-hidden hover:bg-[#E5EFFF] hover:shadow-xl transition-all duration-300 cursor-pointer">
-                    <img src={hotel.imageURL} alt="image" className="w-[270px] h-[215px]" />
-                    <div className="flex flex-col p-3 w-[340px] text-start">
-                        <h1 className="text-[19px] font-[600] text-slate-800">{hotel.hotelName}</h1>
-                         <p className="text-[#B54C01]">{getStars(hotel.starRating)}</p>
-                        <div className="pt-2">
-                            <p className="text-[13px]">This hotel includes </p>
+                    <img src={hotel.imageURL} alt="image" className="w-[150px] md:w-[270px] h-[130px] md:h-[215px]" />
+                    <div className="flex flex-col p-1.5 md:p-3 w-[220px] md:w-[340px] text-start justify-between">
+                      <div>
+                      <h1 className="text-[12px] md:text-[19px] font-[600] text-slate-800">{hotel.hotelName}</h1>
+                        <div className="flex flex-row items-center gap-2 ">
+                        <p className="text-[#B54C01] text-[13px] md:text-[17px]">{getStars(hotel.starRating)}</p>
+                        <div className="md:hidden flex flex-row items-center gap-1">
+                        <span className="text-[10px] md:text-[15px] text-blue-500 font-[600]">{ratting(hotel.reviewScore)}</span>
+                        <span className="text-[10px] md:text-[14px] font-[500] text-black/60 flex"><p className="text-[10px] md:text-[13px] font-[500]">{hotel.reviewCount} reviews</p> </span>
+                        </div>
+                        </div>
+                        <div className="pt-0.5 md:pt-2">
+                            <p className="text-[10px] md:text-[13px]">This hotel includes </p>
                             <div className="flex flx-row gap-1 pt-1">
-                                {hotel.includeBreakfast && <span className="rounded px-1 text-[12px] text-black/60 font-[500] border border-black/40">Breakfast </span>}
-                                {hotel.freeWifi && <span className="rounded px-1 text-[12px] text-black/60 font-[500] border border-black/40">Free WiFi </span>}
-                            </div>
-                            
+                                {hotel.includeBreakfast && <span className="rounded px-1 text-[8px] md:text-[12px] text-black/60 font-[500] border border-black/40">Breakfast </span>}
+                                {hotel.freeWifi && <span className="rounded px-1 text-[8px] md:text-[12px] text-black/60 font-[500] border border-black/40">Free WiFi </span>}
+                            </div>  
+                        </div>
+                      </div>
+                        <div className="md:hidden">
+                        <div className=" flex flex-col justify-items-end bottom-0 align-text-bottom">
+                          <div className="relative flex flex-row justify-end-safe gap-1 items-baseline bottom-0">
+                          <span className="text-[13px] text-black/50">Rs.</span>
+                          <span className="text-[17px]  text-red-500 font-[500] md:font-[600]">{getCleanPrice(hotel.dailyRate)}</span>
+                          </div>
+                        </div>
                         </div>
                     </div>
-                    <div className="relative border-l border-black/20 w-[200px] flex flex-col items-end p-2">
+                    <div className="hidden relative border-l border-black/20 w-[200px] md:flex flex-col items-end p-2">
                     <span className="text-[15px] text-blue-500 font-[600]">{ratting(hotel.reviewScore)}</span>
                     <span className="text-[14px] font-[500] text-black/60 flex"><p className=" text-[13px] font-[500]">{hotel.reviewCount} reviews</p> </span> 
                     <div className="absolute flex flex-col justify-items-end bottom-5 align-text-bottom">
