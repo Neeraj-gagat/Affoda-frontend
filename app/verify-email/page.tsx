@@ -2,7 +2,7 @@
 import { Suspense } from 'react';
 import EmailVerificationContent from './EmailVerificationContent';
 
-// This is your main page component
+// 
 export default function VerifyEmailPage() {
   return (
     <Suspense fallback={
