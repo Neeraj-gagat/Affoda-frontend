@@ -80,7 +80,7 @@ const sortby = searchParams.get("sortby");
                 language,
                 maxResult: maxresults,
                 sortBy: sortby,
-                discountOnly: false,
+                // discountOnly: false,
                 // minimumStarRating: 0,
                 // minimumReviewScore: 0,
                 // dailyRate: {
