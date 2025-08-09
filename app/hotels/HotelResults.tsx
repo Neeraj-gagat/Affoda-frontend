@@ -67,7 +67,7 @@ const sortby = searchParams.get("sortby");
         sortby: string
       ) => {
         try {
-          const res = await fetch("http://localhost:3001/api/v1/search/hotel-result", {
+          const res = await fetch("https://backend.affoda.com/api/v1/search/hotel-result", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
