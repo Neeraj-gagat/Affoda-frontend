@@ -8,7 +8,7 @@ export default function HotelsPageWrapper() {
     <Suspense fallback={
       <div>
         <AppBar/>
-        {Array.from({length:2}).map((_,idx) => (
+        {Array.from({length:5}).map((_,idx) => (
           <HotelCardSkeleton key={idx}/>
         ))}
       </div>

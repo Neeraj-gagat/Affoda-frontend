@@ -45,13 +45,13 @@ const sortby = searchParams.get("sortby");
     useEffect(() => {
         if (!searchParams) return;
     
-        if (city && checkIn && checkOut && rooms && adults && children && language && maxresults) {
+        if (city && checkIn && checkOut && rooms && adults && children && language && currency && maxresults && sortby) {
           console.log("before fetching hotels")
           fetchHotels(city as string, checkIn as string, checkOut as string, parseInt(rooms as string), parseInt(adults as string), parseInt(children as string), language as string, currency as string, parseInt(maxresults as string), sortby as string );
           console.log("after fetching hotels")
         }
         console.log("here i am"+city, checkIn, checkOut, rooms, adults, children, language, currency, maxresults, sortby);
-      }, [city, checkIn, checkOut, rooms, adults, children, language, currency, maxresults, sortby]);
+      }, [searchParams]);
 
 
       const fetchHotels = async (
@@ -101,9 +101,10 @@ const sortby = searchParams.get("sortby");
           if (!result || !result.results) {
             console.warn("Empty or invalid response from server:", result);
             setData([]);
-            setLoading(false);
+           
           } else {
-            setData(result.results); // assuming result.results is the hotel list
+            setData(result.results);
+            setLoading(false);
           }
         } catch (err) {
           console.error("Error fetching hotels:", err);
