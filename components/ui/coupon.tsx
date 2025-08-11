@@ -72,10 +72,10 @@ const CouponComponent: React.FC<CouponProps> = ({
             </div>
           </div>
           <div className="flex-1">
-            <h3 className="text-green-800 font-semibold text-sm mb-1">
+            <h3 className="text-green-800 font-semibold text-[10px] md:text-sm mb-1">
               Success!
             </h3>
-            <p className="text-green-700 text-sm">
+            <p className="text-green-700 text-[10px] md:text-sm">
               {activationMessage}
             </p>
           </div>
