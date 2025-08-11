@@ -2,8 +2,11 @@
 import { AppBar } from "@/components/AppBar";
 import Footer from "@/components/Footer";
 import HotelCardSkeleton from "@/components/HotelsSkeleton";
+import CouponComponent from "@/components/ui/coupon";
+// import CouponDemo from "@/components/ui/coupon";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+// import { useRouter } from 'next/navigation';
 
 interface hotelsdataprops {
     results: Hotel[]
@@ -151,8 +154,18 @@ const ratting = (reviewScore:number):string => {
 }
 
 const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
+
  return <div className="pt-20">
-        <div className="py-5 md:py-10 flex flex-col items-center justify-center gap-1.5 md:gap-4">
+        <div className="flex justify-center"> 
+        <CouponComponent showCloseButton={false} discount="5%" onActivate={() => {
+        //  window.location.reload();
+          return {
+            description:"your 5% discount coupon has been activated successfully"
+          }
+        } }/>
+        </div>
+        
+        <div className="py-5 md:pb-10 flex flex-col items-center justify-center gap-1.5 md:gap-4">
             {loading
             ? Array.from({length:5}).map((_, index) => (
               <HotelCardSkeleton key={index} />
