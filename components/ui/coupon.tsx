@@ -85,7 +85,7 @@ const CouponComponent: React.FC<CouponProps> = ({
   }
 
   return (
-    <div className="w-[810px] relative bg-gradient-to-r from-orange-50 to-orange-100 border border-affoda-blue/40 rounded-lg shadow-sm p-4 mx-4 my-2">
+    <div className="hidden md:block w-[810px] relative bg-gradient-to-r from-orange-50 to-orange-100 border border-affoda-blue/40 rounded-lg shadow-sm p-4 mx-4 my-2">
       {/* Close button */}
       {showCloseButton && (
         <button

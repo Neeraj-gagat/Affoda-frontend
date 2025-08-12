@@ -15,7 +15,7 @@ export const AppBar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <header className={`bg-white shadow-sm fixed w-screen top-0 z-50`}>
+    <header className={`bg-white shadow-sm fixed w-screen top-0 z-50 px-1 md:px-20`}>
       <div className="container mx-auto px-5 sm:px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
