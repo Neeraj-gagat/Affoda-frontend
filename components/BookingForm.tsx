@@ -81,7 +81,7 @@ const BookingForm = () => {
       adults,
       children
     });
-    router.push(`/hotels?city=${city}&checkIn=${formatAPIDate(dateRange?.from)}&checkOut=${formatAPIDate(dateRange?.to)}&rooms=${rooms}&adults=${adults}&children=${children}&language=${"en-us"}&currency=${"INR"}&maxresults=${10}&sortby=${"PriceAsc"}`);
+    router.push(`/hotels?cityname=${destination}&city=${city}&checkIn=${formatAPIDate(dateRange?.from)}&checkOut=${formatAPIDate(dateRange?.to)}&rooms=${rooms}&adults=${adults}&children=${children}&language=${"en-us"}&currency=${"INR"}&maxresults=${10}&sortby=${"PriceAsc"}`);
   };
 
   return (

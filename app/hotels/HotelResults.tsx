@@ -1,5 +1,6 @@
 "use client"
 import { AppBar } from "@/components/AppBar";
+import { BookingForm2 } from "@/components/BookingForm2";
 import Footer from "@/components/Footer";
 import HotelCardSkeleton from "@/components/HotelsSkeleton";
 import CouponComponent from "@/components/ui/coupon";
@@ -34,6 +35,7 @@ export default function HotelsPage() {
     const searchParams = useSearchParams();
     const [data, setData] = useState<Hotel[]>([])
     const [loading, setLoading] = useState(true);
+    const cityname = searchParams.get("cityname");
     const city = searchParams.get("city");
 const checkIn = searchParams.get("checkIn");
 const checkOut = searchParams.get("checkOut");
@@ -121,6 +123,7 @@ const sortby = searchParams.get("sortby");
 
     return <div className="overflow-x-hidden">
         <AppBar/>
+        <BookingForm2 city={cityname || ""} checkIn={checkIn || ""} checkOut={checkOut || ""} guests={Number(adults)} child={Number(children)} />
         <Result results={data} loading={loading}/>
         <Footer/>
     </div>
@@ -155,7 +158,7 @@ const ratting = (reviewScore:number):string => {
 
 const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
 
- return <div className="pt-20">
+ return <div className="pt-0 md:pt-20">
         <div className="flex justify-center"> 
         <CouponComponent showCloseButton={false} discount="5%" onActivate={() => {
         //  window.location.reload();
@@ -165,7 +168,7 @@ const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
         } }/>
         </div>
         
-        <div className="py-5 md:pb-10 flex flex-col items-center justify-center gap-1.5 md:gap-4">
+        <div className="py-2 md:pb-10 flex flex-col items-center justify-center gap-1.5 md:gap-4">
             {loading
             ? Array.from({length:5}).map((_, index) => (
               <HotelCardSkeleton key={index} />
