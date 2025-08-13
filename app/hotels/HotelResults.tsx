@@ -171,7 +171,7 @@ const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
               <HotelCardSkeleton key={index} />
             ))
             :results?.map((hotel: Hotel) => (
-                <div key={hotel.hotelId} className="bg-white border border-black/20 flex flex-row rounded-lg overflow-hidden hover:bg-[#E5EFFF] hover:shadow-xl transition-all duration-300 cursor-pointer mx-2">
+                <div key={hotel.hotelId} className="bg-white md:border border-black/20 flex flex-row rounded-lg overflow-hidden hover:bg-[#E5EFFF] hover:shadow-xl transition-all duration-300 cursor-pointer mx-2 shadow-[0_-4px_3px_rgba(0,0,0,0.06),0_2px_3px_rgba(0,0,0,0.25)] md:shadow-none">
                     <img src={hotel.imageURL} alt="image" className="w-[150px] md:w-[270px] h-[130px] md:h-[215px]" />
                     <div className="flex flex-col p-1.5 md:p-3 w-[220px] md:w-[340px] text-start justify-between">
                       <div>
