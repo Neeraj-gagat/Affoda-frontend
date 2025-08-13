@@ -115,10 +115,10 @@ const BookingForm = () => {
       </div>
 
       {/* Date Range and Guests Container */}
-      <div className="bg-gray-50 p-4 rounded-lg border-2 border-gray-200">
+      <div className="bg-gray-50 p-2 md:p-4 rounded-lg border-2 border-gray-200">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {/* Check-in Date */}
-          <div className='grid md:flex grid-cols-2 md:flex-row gap-1 md:gap-3 '>
+          <div className='grid md:flex grid-cols-2 md:flex-row gap-1 md:gap-3 justify-center items-center '>
           <div>
             <label className="block text-[12px] md:text-[15px] font-medium text-gray-700 mb-2">Check-in</label>
             <Popover>
@@ -126,7 +126,7 @@ const BookingForm = () => {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-34 md:w-[225px] justify-start transform duration-300 hover:bg-gray-100 text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
+                    "overflow-hidden w-full md:w-[225px] justify-start transform duration-300 hover:bg-gray-100 text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
                     !dateRange?.from && "text-gray-400"
                   )}
                 >
@@ -162,7 +162,7 @@ const BookingForm = () => {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-34 md:w-[225px] hover:bg-gray-100 transform duration-300 justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
+                    "overflow-hidden w-full md:w-[225px] hover:bg-gray-100 transform duration-300 justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
                     !dateRange?.to && "text-gray-400"
                   )}
                 >
