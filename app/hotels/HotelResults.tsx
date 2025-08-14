@@ -123,7 +123,7 @@ const sortby = searchParams.get("sortby");
 
     return <div className="overflow-x-hidden">
         <AppBar/>
-        <BookingForm2 city={cityname || ""} checkIn={checkIn || ""} checkOut={checkOut || ""} guests={Number(adults)} child={Number(children)} />
+        <BookingForm2 cityname={cityname || ""} checkIn={checkIn || ""} checkOut={checkOut || ""} guests={Number(adults)} child={Number(children)} />
         <Result results={data} loading={loading}/>
         <Footer/>
     </div>
