@@ -1,20 +1,40 @@
 import { RiSearchLine } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { MapPin } from "lucide-react";
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon, Search, MapPin, Users } from 'lucide-react';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { Button } from "./ui/button";
+import { Calendar } from '@/components/ui/calendar';
+import { cn } from '@/lib/utils';
+import type { DateRange } from 'react-day-picker';
+import { useRouter } from 'next/navigation';
 
 interface City {
   cityId: string;
   cityName: string;
 }
 
-export const BookingForm2 = ({ cityname, checkIn, checkOut, guests, child }: { cityname: string ,checkIn:string, checkOut: string, guests:number, child?:number }) => {
+export const BookingForm2 = ({ cityname, checkIn, checkOut, guests, child }: { cityname: string ,checkIn:string, checkOut: string, guests:number, child:number }) => {
+    const router =  useRouter(); 
     const [isActive, setIsActive] = useState(false);
     const [destination, setDestination] = useState("");
-    // const [city , setcityy] = useState<string>('')
+    const [city , setcity] = useState<string>('')
       const [cities, setCities] = useState<City[]>([]);
       const [showSuggestions, setShowSuggestions] = useState(false);
       const [filteredCities, setFilteredCities] = useState<City[]>([]);
+      const [dateRange, setDateRange] = useState<DateRange | undefined>({
+          from: undefined,
+          to: undefined,
+        });
+      const [isGuestPopoverOpen, setIsGuestPopoverOpen] = useState(false);
+      const [rooms, setRooms] = useState(1);
+      const [adults, setAdults] = useState(2);
+      const [children, setChildren] = useState(0);
 
     useEffect(() => {
         fetch("/cities.json")
@@ -52,12 +72,38 @@ export const BookingForm2 = ({ cityname, checkIn, checkOut, guests, child }: { c
         };
       }, [isActive]);
 
+      const formatAPIDate = (date?: Date) => {
+        if (!date) return "";
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
+
       const handleSelect = (city: City) => {
         setDestination(city.cityName);
         setShowSuggestions(false);
-        // setcity(city.cityId);
+        setcity(city.cityId);
         // you can also store city.cityId if needed for API calls
       };
+
+      const handleSearch = (e: React.FormEvent) => {
+          e.preventDefault();
+          console.log({
+            destination,
+            checkin: dateRange?.from,
+            checkout: dateRange?.to,
+            rooms,
+            adults,
+            children
+          });
+          setIsActive(!isActive);
+          setDestination("")
+          setcity("")
+          setDateRange({ from: undefined, to: undefined});
+          setRooms(1)
+          router.push(`/hotels?cityname=${destination}&city=${city}&checkIn=${formatAPIDate(dateRange?.from)}&checkOut=${formatAPIDate(dateRange?.to)}&rooms=${rooms}&adults=${adults}&children=${children}&language=${"en-us"}&currency=${"INR"}&maxresults=${10}&sortby=${"PriceAsc"}`);
+        };
 
     return (
     <>
@@ -76,7 +122,7 @@ export const BookingForm2 = ({ cityname, checkIn, checkOut, guests, child }: { c
         </div>
     </div>
     </button>
-    {isActive && <div>
+    {isActive && <form onSubmit={handleSearch}>
         <div className="fixed top-0 left-0 w-full h-full bg-white z-50 overflow-hidden">
             <div className="flex flex-col items-center justify-center">
                 <div className="bg-affoda-blue flex justify-between w-full text-white text-[14px] font-[500] p-5">
@@ -111,9 +157,211 @@ export const BookingForm2 = ({ cityname, checkIn, checkOut, guests, child }: { c
                 </div>
       </div>
                 </div>
+                {/* {checkin checkout} */}
+                <div className="w-full px-3 pt-5">
+                <div className="bg-gray-50 p-2 md:p-4 rounded-lg border-gray-200 w-full ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          {/* Check-in Date */}
+          <div className='grid md:flex grid-cols-2 md:flex-row gap-1 md:gap-3 justify-center items-center '>
+          <div>
+            <label className="block text-[12px] md:text-[15px] font-medium text-gray-700 mb-2">Check-in</label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "overflow-hidden w-full md:w-[225px] justify-start transform duration-300 hover:bg-gray-100 text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
+                    !dateRange?.from && "text-gray-400"
+                  )}
+                >
+                  <CalendarIcon className="mr-0 md:mr-2 h-4 w-4" />
+                  <div className="flex flex-col items-start">
+                    <span className="text-[12px] md:text-[14px] font-medium">
+                      {dateRange?.from ? format(dateRange.from, "dd MMM yyyy") : "Select date"}
+                    </span>
+                    <span className="text-[10px] md:text-[12px] text-gray-400">
+                      {dateRange?.from ? format(dateRange.from, "EEEE") : "Day"}
+                    </span>
+                  </div>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0 bg-white shadow-lg border z-50" align="start">
+                <Calendar
+                  mode="range"
+                  selected={dateRange}
+                  onSelect={setDateRange}
+                  numberOfMonths={2}
+                  disabled={(date) => date < new Date()}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+
+          {/* Check-out Date */}
+          <div>
+            <label className="block text-[12px] md:text-[15px] font-medium text-gray-700 mb-2">Check-out</label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "overflow-hidden w-full md:w-[225px] hover:bg-gray-100 transform duration-300 justify-start text-left h-10 md:h-12 text-gray-900 font-normal bg-white border-gray-300 hover:border-gray-400",
+                    !dateRange?.to && "text-gray-400"
+                  )}
+                >
+                  <CalendarIcon className="mr-0 md:mr-2 h-4 w-4" />
+                  <div className="flex flex-col items-start">
+                    <span className="text-[12px] md:text-[14px] font-medium">
+                      {dateRange?.to ? format(dateRange.to, "dd MMM yyyy") : "Select date"}
+                    </span>
+                    <span className="text-[10px] md:text-[12px] text-gray-400">
+                      {dateRange?.to ? format(dateRange.to, "EEEE") : "Day"}
+                    </span>
+                  </div>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0 bg-white shadow-lg border z-50" align="start">
+                <Calendar
+                  mode="range"
+                  selected={dateRange}
+                  onSelect={setDateRange}
+                  numberOfMonths={2}
+                  disabled={(date) => date < new Date()}
+                  autoFocus
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
+          </div>
+          
+
+          {/* Guests */}
+          <div>
+            <label className="block text-[12px] md:text-[15px] font-medium text-gray-700 mb-2">Guests & rooms</label>
+            <Popover open={isGuestPopoverOpen} onOpenChange={setIsGuestPopoverOpen}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start text-left transform duration-300 hover:bg-gray-100 text-gray-900 h-10 md:h-12 font-normal bg-white border-gray-300 hover:border-gray-400"
+                >
+                  <Users className="mr-2 h-4 w-4" />
+                  <div className="flex flex-col items-start">
+                    <span className="text-[12px] md:text-[14px] font-medium">
+                      {guests + child} guests
+                    </span>
+                    <span className="text-[10px] md:text-[12px] text-gray-400">
+                      {rooms} room{rooms > 1 ? 's' : ''}
+                    </span>
+                  </div>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80 bg-white shadow-lg border z-50">
+                <div className="space-y-4 p-2">
+                  {/* Adults */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="font-medium">Adults</span>
+                      <p className="text-xs text-gray-500">Ages 18+</p>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8 rounded-full"
+                        onClick={() => setAdults(Math.max(1, adults - 1))}
+                      >
+                        -
+                      </Button>
+                      <span className="w-6 text-center">{adults}</span>
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8 rounded-full"
+                        onClick={() => setAdults(adults + 1)}
+                      >
+                        +
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {/* Children */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="font-medium">Children</span>
+                      <p className="text-xs text-gray-500">Ages 0-17</p>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8 rounded-full"
+                        onClick={() => setChildren(Math.max(0, children - 1))}
+                      >
+                        -
+                      </Button>
+                      <span className="w-6 text-center">{children}</span>
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8 rounded-full"
+                        onClick={() => setChildren(children + 1)}
+                      >
+                        +
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Rooms */}
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Rooms</span>
+                    <div className="flex items-center space-x-3">
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8 rounded-full"
+                        onClick={() => setRooms(Math.max(1, rooms - 1))}
+                      >
+                        -
+                      </Button>
+                      <span className="w-6 text-center">{rooms}</span>
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-8 w-8 rounded-full"
+                        onClick={() => setRooms(rooms + 1)}
+                      >
+                        +
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        </div>
+      </div>
+
+      <div className="pt-5 px-3">
+        <Button
+                type="submit" 
+                className="w-full bg-affoda-blue text-white font-bold py-4 text-lg h-auto rounded-lg shadow-lg"
+              >
+                <Search className="mr-2 h-5 w-5" />
+                SEARCH
+              </Button>
+      </div>
+                </div>
+
             </div>
         </div>
-    </div> }
+    </form> }
     </>
   );
 }

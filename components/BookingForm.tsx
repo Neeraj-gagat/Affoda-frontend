@@ -31,7 +31,7 @@ const BookingForm = () => {
   });
   const [city , setcity] = useState<string>('')
   const [rooms, setRooms] = useState(1);
-  const [adults, setAdults] = useState(2);
+  const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [isGuestPopoverOpen, setIsGuestPopoverOpen] = useState(false);
 
