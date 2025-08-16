@@ -1,5 +1,3 @@
-// "use client"
-// import { MapPin } from "lucide-react"
 import { useEffect, useState } from "react";
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon, Search, MapPin, Users } from 'lucide-react';
@@ -21,7 +19,7 @@ interface City {
 
 export const BookingForm3 = ({ cityname, checkIn, checkOut, guests, child }: { cityname: string ,checkIn:string, checkOut: string, guests:number, child:number }) => {
       const router = useRouter();
-      const [destination, setDestination] = useState(cityname || "");
+      const [destination, setDestination] = useState("");
       const [showSuggestions, setShowSuggestions] = useState(false);
       const [filteredCities, setFilteredCities] = useState<City[]>([]);
       const [cities, setCities] = useState<City[]>([]);
@@ -102,10 +100,10 @@ export const BookingForm3 = ({ cityname, checkIn, checkOut, guests, child }: { c
                     <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                     <input
                         type="text"
-                        placeholder="Enter a destination or property"
+                        placeholder={cityname || "Enter a destination or property"}
                         value={destination}
                         onChange={(e) => setDestination(e.target.value)}
-                        className="w-full pl-12 pr-4 py-2.5 text-[12px] md:text-[15px] text-gray-900 border-1 border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 bg-white shadow-sm"
+                        className="w-full pl-12 pr-4 py-2.5 text-[12px] placeholder:text-black/85 placeholder:font-[600] md:text-[15px] text-gray-900 border-1 border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 bg-white shadow-sm"
                     />
                     {/* Suggestions Dropdown */}
                 {showSuggestions && filteredCities.length > 0 && (
@@ -316,9 +314,9 @@ export const BookingForm3 = ({ cityname, checkIn, checkOut, guests, child }: { c
                 <div>
                     <Button
                             type="submit" 
-                            className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold h-[45px] text-lg rounded-lg shadow-lg"
+                            className="w-full bg-affoda-search hover:bg-affoda-search/90 text-white font-bold h-[45px] text-lg rounded-lg shadow-lg"
                           >
-                            <Search className="mr-2 h-5 w-5" />
+                            <Search className="mr-0 h-5 w-5" />
                             SEARCH
                           </Button>
                 </div>

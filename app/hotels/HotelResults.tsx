@@ -164,7 +164,7 @@ const ratting = (reviewScore:number):string => {
 
 const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
 
- return <div className="">
+ return <div className="pt-4 md:pt-0 md:-mt-6">
         <div className="flex justify-center -my-2"> 
         <CouponComponent showCloseButton={false} discount="5%" onActivate={() => {
         //  window.location.reload();
@@ -180,8 +180,8 @@ const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
               <HotelCardSkeleton key={index} />
             ))
             :results?.map((hotel: Hotel) => (
-                <div key={hotel.hotelId} className="bg-white md:border border-black/20 flex flex-row rounded-lg overflow-hidden hover:bg-[#E5EFFF] hover:shadow-xl transition-all duration-300 cursor-pointer mx-2 shadow-[0_-4px_3px_rgba(0,0,0,0.06),0_2px_3px_rgba(0,0,0,0.25)] md:shadow-none">
-                    <img src={hotel.imageURL} alt="image" className="w-[150px] md:w-[270px] h-[130px] md:h-[215px]" />
+                <div key={hotel.hotelId} className="bg-white md:border border-black/20 flex flex-row rounded-lg overflow-hidden hover:bg-[#E5EFFF] hover:shadow-xl transition-all duration-300 cursor-pointer mx-2 shadow-[0_-2px_3px_rgba(0,0,0,0.06),0_2px_3px_rgba(0,0,0,0.25)] md:shadow-none">
+                    <img src={hotel.imageURL} alt="image" className="w-[150px] md:w-[270px] h-[140px] md:h-[215px]" />
                     <div className="flex flex-col p-1.5 md:p-3 w-[220px] md:w-[340px] text-start justify-between">
                       <div>
                       <h1 className="text-[12px] md:text-[19px] font-[600] text-slate-800">{hotel.hotelName}</h1>
@@ -203,8 +203,8 @@ const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
                         <div className="md:hidden">
                         <div className=" flex flex-col justify-items-end bottom-0 align-text-bottom">
                           <div className="relative flex flex-row justify-end-safe gap-1 items-baseline bottom-0">
-                          <span className="text-[13px] text-black/50">Rs.</span>
-                          <span className="text-[17px]  text-red-500 font-[500] md:font-[600]">{getCleanPrice(hotel.dailyRate)}</span>
+                          <span className="text-[13px] text-red-500">Rs.</span>
+                          <span className="text-[18px]  text-red-500 font-[500] md:font-[600]">{getCleanPrice(hotel.dailyRate)}</span>
                           </div>
                         </div>
                         </div>

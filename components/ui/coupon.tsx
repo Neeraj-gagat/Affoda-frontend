@@ -85,7 +85,7 @@ const CouponComponent: React.FC<CouponProps> = ({
   }
 
   return (
-    <div className="hidden md:block w-[810px] relative bg-gradient-to-r from-orange-50 to-orange-100 border border-affoda-blue/40 rounded-lg shadow-sm p-3 mx-4 my-2">
+    <div className="hidden md:block w-[810px] relative bg-gradient-to-r from-orange-50 to-orange-100 shadow-[0_-2px_3px_rgba(0,0,0,0.06),0_2px_3px_rgba(0,0,0,0.25)] border-affoda-blue/40 rounded-lg p-3 mx-4 my-2">
       {/* Close button */}
       {showCloseButton && (
         <button
@@ -100,14 +100,14 @@ const CouponComponent: React.FC<CouponProps> = ({
       <div className="flex items-center gap-4">
         {/* Coupon Icon */}
         <div className="flex-shrink-0">
-          <div className="w-6 md:w-12 h-6 md:h-12 bg-affoda-blue rounded-lg flex items-center justify-center">
+          <div className="w-6 md:w-12 h-6 md:h-12 bg-[#FEA952] rounded-lg flex items-center justify-center">
             <Ticket className="w-5 md:w-6 h-5 md:h-6 text-white" />
           </div>
         </div>
 
         {/* Content */}
         <div className="flex-1">
-          <h3 className="text-affoda-blue font-semibold text-[10px] md:text-sm mb-1">
+          <h3 className="text-[#FEA952] font-semibold text-[10px] md:text-sm mb-1">
             Congratulations! You get an extra {discount} today.
           </h3>
           <p className="text-affoda-blue hidden md:block text-sm">
