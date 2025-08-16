@@ -1,6 +1,7 @@
 "use client"
 import { AppBar } from "@/components/AppBar";
 import { BookingForm2 } from "@/components/BookingForm2";
+import { BookingForm3 } from "@/components/BookingForm3";
 import Footer from "@/components/Footer";
 import HotelCardSkeleton from "@/components/HotelsSkeleton";
 import CouponComponent from "@/components/ui/coupon";
@@ -122,7 +123,12 @@ const sortby = searchParams.get("sortby");
       }
 
     return <div className="overflow-x-hidden">
-        <AppBar/>
+      {/* <div>
+      <AppBar/>
+        <BookingForm3/>
+      </div> */}
+            <AppBar/>
+            <BookingForm3 cityname={cityname || ""} checkIn={checkIn || ""} checkOut={checkOut || ""} guests={Number(adults)} child={Number(children)} />
         <BookingForm2 cityname={cityname || ""} checkIn={checkIn || ""} checkOut={checkOut || ""} guests={Number(adults)} child={Number(children)} />
         <Result results={data} loading={loading}/>
         <Footer/>
@@ -158,8 +164,8 @@ const ratting = (reviewScore:number):string => {
 
 const Result = ({results, loading}:hotelsdataprops & {loading: boolean}) => {
 
- return <div className="pt-0 md:pt-20">
-        <div className="flex justify-center"> 
+ return <div className="">
+        <div className="flex justify-center -my-2"> 
         <CouponComponent showCloseButton={false} discount="5%" onActivate={() => {
         //  window.location.reload();
           return {
